@@ -30,6 +30,6 @@ class OverviewController extends Controller
 
     public function studentsData()
     {
-        return view ('overview.programming.students-data');
+        return view('overview.programming.students-data');
     }
 }

@@ -14,12 +14,15 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-//Routes
-Route::get('/home', 'MainController@home')->name('home.index');
-Route::get('/about-me', 'MainController@aboutMe')->name('about-me');
-Route::get('/programming', 'MainController@programming')->name('programming');
-Route::get('/music-producing', 'MainController@musicProducing')->name('music');
-Route::get('/contact', 'MainController@contact')->name('contact');
+//Main Routes
+Route::group(['namespace' => 'Main'], function () {
+    Route::get('/', 'HomeController@index')->name('home.index');
+    Route::get('/home', 'HomeController@index')->name('home.index');
+    Route::get('/about-me', 'AboutMeController@index')->name('about-me');
+    Route::get('/programming', 'ProgrammingController@index')->name('programming');
+    Route::get('/music-producing', 'MusicController@index')->name('music');
+    Route::get('/contact', 'ContactController@index')->name('contact');
+});
 
 //Overview
 Route::group(['namespace' => 'Overview'], function () {
@@ -28,5 +31,4 @@ Route::group(['namespace' => 'Overview'], function () {
     Route::get('/overview/digital-invitation', 'OverviewController@digitalInv')->name('ov.digitalinv');
     Route::get('/overview/calculator', 'OverviewController@calculator')->name('ov.calculator');
     Route::get('/overview/students-data', 'OverviewController@studentsData')->name('ov.students');
-
 });
